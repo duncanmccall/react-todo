@@ -7,9 +7,15 @@ export class AddTodoItem extends Component {
     
     onChange = (e) => this.setState({ title: e.target.value });
 
+    onSubmit = (e) => {
+        e.preventDefault();
+        this.props.addTodo(this.state.title)
+        this.setState({title: ''})
+    }
+
     render() {
         return (
-            <form style={addTodoForm}>
+            <form onSubmit={this.onSubmit} style={addTodoForm}>
                 <input
                     style={addTodoFormInputField}
                     type="text"
